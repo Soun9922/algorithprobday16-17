@@ -1,6 +1,7 @@
 package insertionsort;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class InsertionSort {
     void insertionSortAscen(int[] arr){
@@ -34,7 +35,14 @@ public class InsertionSort {
     }
 
     public static void main(String[] args) {
-        int[] data = {9, 10, 8, 4, 2, 5, 1, 6, 7};
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of elements you want to store: ");
+        int num = sc.nextInt();
+        int[] data = new int[num];
+        System.out.println("Enter the elements you want to sort: ");
+        for (int i = 0; i < num; i++) {
+            data[i]= sc.nextInt();
+        }
         InsertionSort insertionSort1 = new InsertionSort();
         insertionSort1.insertionSortAscen(data);
         System.out.println("Sorted elements in Ascending order: ");
