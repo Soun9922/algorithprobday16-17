@@ -4,24 +4,30 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class BinarySearchMain {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter numbers of words you wish to input: ");
-        int num = sc.nextInt();
-
-        String[] words = new String[num];
-
-        System.out.println("Enter the words");
-        for (int i = 0; i < words.length; i++) {
-            System.out.print("WORD " + (i + 1) + ": ");
-            words[i] = sc.next();
+    static int binarySearch(String[] arr, String x){
+        int l = 0, r = arr.length - 1;
+        while (l <= r){
+            int m = l + (r - 1) / 2;
+            int res = x.compareTo(arr[m]);
+            if (res == 0)
+                return m;
+            if (res > 0)
+                l = m + 1;
+            else
+                r = m - 1;
         }
-        System.out.println("enter the word you want to search for: ");
-        String word = sc.next();
-
-        Arrays.sort(words);
-
-        int index = Arrays.binarySearch(words,word);
-        System.out.println(word + " = " + index);
+        return -1;
     }
-}
+    public static void main(String[] args) {
+        String[] arr = {"contribute", "sample", "java", "practice", "money", "rice"};
+        String x = "money";
+
+        int result = binarySearch(arr, x);
+
+        if (result == -1)
+            System.out.println("Element not present");
+        else
+            System.out.println("Element found at " + "index " + result);
+        }
+    }
+
